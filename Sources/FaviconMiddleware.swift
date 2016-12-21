@@ -4,20 +4,19 @@ import Vapor
 
 public final class FaviconMiddleware: Middleware {
   var iconPath: String
-
-  private var headers: [HeaderKey: String]
-  private var body: Body?
+  var headers: [HeaderKey: String]
+  var body: Body?
 
   // default maxAge is 1 day
-  init(_ path: String, maxAge: Int = 86400000) {
-    iconPath = drop.workDir.appending(path)
+  public init(_ path: String, maxAge: Int = 86400000) {
+    iconPath = path
     headers = [
       "Content-Type": "image/x-icon",
       "Cache-Control": "public, max-age=\(maxAge / 1000)"
     ]
   }
 
-  func respond(to request: Request, chainingTo next: Responder) throws -> Response {
+  public func respond(to request: Request, chainingTo next: Responder) throws -> Response {
     if request.uri.path != "/favicon.ico" {
       return try next.respond(to: request)
     }

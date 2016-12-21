@@ -23,11 +23,12 @@ import VaporFaviconMiddleware
 let drop = Droplet()
 
 // path to favicon image in workDir
-drop.middleware.append(FaviconMiddleware("/Public/assets/favicon.png"))
+let faviconPath = drop.workDir.appending("/Public/assets/favicon.png")
+drop.middleware.append(FaviconMiddleware(faviconPath))
 
 // or you can also overwrite default cache-control max-age directive in ms (defaulting to 1 day)
 let maxAge = 1000 * 60 * 60 * 24 * 365 // 1 month
-drop.middleware.append(FaviconMiddleware("/Public/assets/favicon.png", maxAge: maxAge))
+drop.middleware.append(FaviconMiddleware(faviconPath, maxAge: maxAge))
 ```
 
 ---
