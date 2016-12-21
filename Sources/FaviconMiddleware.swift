@@ -3,6 +3,7 @@ import HTTP
 import Vapor
 
 public final class FaviconMiddleware: Middleware {
+  let loader = DataFile()
   var iconPath: String
   var headers: [HeaderKey: String]
   var body: Body?
@@ -40,7 +41,7 @@ public final class FaviconMiddleware: Middleware {
 
     do {
       // Read file from workDir path
-      let bytes = try DataFile().load(path: iconPath)
+      let bytes = try loader.load(path: iconPath)
       body = .data(bytes)
 
       return Response(status: .ok, headers: headers, body: body!)
