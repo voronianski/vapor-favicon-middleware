@@ -8,6 +8,7 @@ public final class FaviconMiddleware: Middleware {
   private var headers: [HeaderKey: String]
   private var body: Body?
 
+  // default maxAge is 1 day
   init(_ path: String, maxAge: Int = 86400000) {
     iconPath = drop.workDir.appending(path)
     headers = [

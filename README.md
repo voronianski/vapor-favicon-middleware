@@ -24,6 +24,10 @@ let drop = Droplet()
 
 // path to favicon image in workDir
 drop.middleware.append(FaviconMiddleware("/Public/assets/favicon.png"))
+
+// or you can also overwrite default cache-control max-age directive in ms (defaulting to 1 day)
+let maxAge = 1000 * 60 * 60 * 24 * 365 // 1 month
+drop.middleware.append(FaviconMiddleware("/Public/assets/favicon.png", maxAge: maxAge))
 ```
 
 ---
