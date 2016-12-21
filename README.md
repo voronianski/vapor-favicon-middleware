@@ -6,6 +6,14 @@
 
 > Favicon serving middleware for [Vapor](https://vapor.codes).
 
+
+[Favicon](https://en.wikipedia.org/wiki/Favicon) is a visual cue that client software, like browsers, use to identify a site.
+
+Why use this module?
+
+- it caches the icon in memory to improve performance by skipping disk access
+- it will serve with the most compatible `Content-Type`
+
 ## Installation
 
 Via Swift Package Manager:
